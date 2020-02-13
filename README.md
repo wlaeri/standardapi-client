@@ -1,4 +1,6 @@
 # StandardAPI Client
+[![npm version](https://img.shields.io/npm/v/standardapi-client.svg?style=flat-square)](https://www.npmjs.org/package/standardapi-client)
+[![install size](https://packagephobia.now.sh/badge?p=standardapi-client)](https://packagephobia.now.sh/result?p=standardapi-client)
 A javascript client for making [StandardAPI](https://github.com/waratuman/standardapi) calls.
 
 ## Installation
