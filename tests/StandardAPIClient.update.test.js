@@ -8,9 +8,6 @@ beforeAll(async (done) => {
     response = await testClient.update('todos', {
       id: 1,
       status: 'COMPLETE'
-    }, {
-      limit: 10,
-      offset: 10
     })
     done()
   } catch (err) {

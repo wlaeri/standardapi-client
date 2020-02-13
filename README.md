@@ -22,7 +22,7 @@ First the client must be instantiated.
 ```node
 import StandardAPIClient from 'standardapi-client';
 
-const client = StandardAPIClient({
+const client = new StandardAPIClient({
   baseURL: API_BASE_URL
 })
 ```
@@ -32,7 +32,7 @@ If the Rails server uses authorization headers you can add them on instantiation
 ```node
 import StandardAPIClient from 'standardapi-client';
 
-const client = StandardAPIClient({
+const client = new StandardAPIClient({
   baseURL: API_BASE_URL,
   headers: {
     'Api-Key': API_KEY,
@@ -44,7 +44,7 @@ const client = StandardAPIClient({
 ## Usage
 Essentially, StandardAPI Client extends [axios](https://github.com/axios/axios) under the hood, adding four methods `create`, `read`, `update`, and `destroy` for making StandardAPI calls.
 
-### client.create(`baseModel`, `body`, `params(optional)`)
+### client.create(`baseModel`, `payload`)
 Sends a POST request to the Rails server to create a record.
 
 ```node
@@ -56,7 +56,7 @@ const response = await client.create('todos', {
 console.log(response.data) // Newly created todo record.
 ```
 
-### client.read(`baseModel`, `params(optional)`)
+### client.read(`baseModel`, `params`)
 Sends a GET request to the Rails server to query a record set.
 
 ```node
@@ -77,7 +77,7 @@ const response = await client.read('todos', {
 console.log(response.data) // The array of todo records that match the query parameters.
 ```
 
-### client.update(`baseModel`, `body`, `params(optional)`)
+### client.update(`baseModel`, `payload`)
 Sends a PATCH request to the Rails server to update a record.
 
 ```node
@@ -89,15 +89,13 @@ const response = await client.update('todos', {
 console.log(response.data) // The updated todo record.
 ```
 
-### client.destroy(`baseModel`, `body`)
+### client.destroy(`baseModel`, `id`)
 Sends a DELETE request to the Rails server to destroy a record.
 
 ```node
-const response = await client.delete('todos', {
-  id: 'abc-123',
-})
+const response = await client.delete('todos', 'abc-123')
 
-console.log(response.data) // The deleted todo record.
+console.log(response.status) // Returns 204 if record is successfully deleted.
 ```
 
 ## Resources

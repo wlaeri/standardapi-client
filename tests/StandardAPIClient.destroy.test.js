@@ -5,9 +5,7 @@ let response
 
 beforeAll(async (done) => {
   try {
-    response = await testClient.destroy('todos', {
-      id: 1
-    })
+    response = await testClient.destroy('todos', 1)
     done()
   } catch (err) {
     done(err)

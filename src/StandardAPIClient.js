@@ -11,9 +11,8 @@ class StandardAPIClient {
     this.__axios = axios.create(params)
   }
 
-  create(baseModel, body, params) {
-    const queryString = qs.stringify({ ...defaultParams, ...params })
-    return this.__axios.post(`/${baseModel}/?${queryString}`, body)
+  create(baseModel, payload) {
+    return this.__axios.post(`/${baseModel}/`, payload)
   }
 
   read(baseModel, params){
@@ -21,15 +20,14 @@ class StandardAPIClient {
     return this.__axios.get(`/${baseModel}/?${queryString}`)
   }
 
-  update(baseModel, body, params){
-    if (!body.id) throw new Error('No ID specified in body.')
-    const queryString = qs.stringify({ ...defaultParams, ...params })
-    return this.__axios.patch(`/${baseModel}/${body.id}/?${queryString}`, { ...body, id: undefined })
+  update(baseModel, payload){
+    if (!payload.id) throw new Error('No ID specified in payload.')
+    return this.__axios.patch(`/${baseModel}/${payload.id}/`, { ...payload, id: undefined })
   }
 
-  destroy(baseModel, body){
-    if (!body.id) throw new Error('No ID specified in body.')
-    return this.__axios.delete(`/${baseModel}/`, { id: body.id })
+  destroy(baseModel, id){
+    if (!id) throw new Error('No ID specified.')
+    return this.__axios.delete(`/${baseModel}/${id}`)
   }
 }
 
