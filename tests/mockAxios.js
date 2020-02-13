@@ -7,7 +7,7 @@ export default (axiosInstance) => {
   mockAxios.onGet().reply(200, TODOS)
   mockAxios.onPost().reply(201, TODOS.concat(NEW_TODO))
   mockAxios.onPatch().reply(200, TODOS.filter(t => t.id !== UPDATED_TODO.id))
-  mockAxios.onDelete().reply(204)
+  mockAxios.onDelete().reply(200)
   
   return mockAxios
 }

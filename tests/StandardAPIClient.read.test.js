@@ -1,11 +1,14 @@
 import testClient from './testClient'
-import { NEW_TODO, BASE_URL, API_KEY } from './mockData'
+import { BASE_URL, API_KEY } from './mockData'
 
 let response
 
 beforeAll(async (done) => {
   try {
-    response = await testClient.create('todos', NEW_TODO)
+    response = await testClient.read('todos', {
+      limit: 10,
+      offset: 10
+    })
     done()
   } catch (err) {
     done(err)
@@ -25,5 +28,5 @@ test('create request has the right authorization headers', () => {
 })
 
 test('mock response is successful', () => {
-  expect(response.status).toBe(201)
+  expect(response.status).toBe(200)
 })

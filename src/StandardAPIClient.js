@@ -1,29 +1,35 @@
 import axios from 'axios'
 import qs from 'qs'
 
+const defaultParams = {
+  limit: 1000,
+  offset: 0
+}
+
 class StandardAPIClient {
   constructor (params) {
     this.__axios = axios.create(params)
   }
 
-  create(baseModel, params) {
-    const queryString = qs.stringify(params)
-    return this.__axios.post(`/${baseModel}/?${queryString}`)
+  create(baseModel, body, params) {
+    const queryString = qs.stringify({ ...defaultParams, ...params })
+    return this.__axios.post(`/${baseModel}/?${queryString}`, body)
   }
 
   read(baseModel, params){
-    const queryString = qs.stringify(params)
+    const queryString = qs.stringify({ ...defaultParams, ...params })
     return this.__axios.get(`/${baseModel}/?${queryString}`)
   }
 
-  update(baseModel, params){
-    const queryString = qs.stringify(params)
-    return this.__axios.patch(`/${baseModel}/?${queryString}`)
+  update(baseModel, body, params){
+    if (!body.id) throw new Error('No ID specified in body.')
+    const queryString = qs.stringify({ ...defaultParams, ...params })
+    return this.__axios.patch(`/${baseModel}/${body.id}/?${queryString}`, { ...body, id: undefined })
   }
 
-  destroy(baseModel, params){
-    const queryString = qs.stringify(params)
-    return this.__axios.delete(`/${baseModel}/?${queryString}`)
+  destroy(baseModel, body){
+    if (!body.id) throw new Error('No ID specified in body.')
+    return this.__axios.delete(`/${baseModel}/`, { id: body.id })
   }
 }
 
