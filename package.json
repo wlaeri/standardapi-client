@@ -1,0 +1,18 @@
+{
+  "name": "standardapi-client",
+  "version": "1.0.0",
+  "description": "A javascript client for making StandardAPI calls.",
+  "main": "index.js",
+  "author": "Will Laeri",
+  "license": "MIT",
+  "engines": {
+    "node": "v10.15.1",
+    "yarn": "1.13.0"
+  },
+  "dependencies": {
+    "axios": "^0.19.2"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.8.4"
+  }
+}
