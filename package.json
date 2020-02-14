@@ -11,6 +11,7 @@
   },
   "scripts": {
     "test": "jest",
+    "test:coverage": "jest --collectCoverage=true",
     "build": "babel src -d build",
     "prepack": "yarn build"
   },
