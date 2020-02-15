@@ -105,6 +105,7 @@ console.log(response.status) // Returns 204 if record is successfully deleted.
 ## Resources
 
 * [StandardAPI Docs](https://github.com/waratuman/standardapi)
+* [React StandardAPI Docs](https://github.com/wlaeri/react-standardapi)
 
 ## License
 
