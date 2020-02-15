@@ -1,6 +1,6 @@
 {
   "name": "standardapi-client",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A javascript client for making StandardAPI calls.",
   "main": "build/StandardAPIClient.js",
   "author": "Will Laeri",
