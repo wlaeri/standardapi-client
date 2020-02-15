@@ -118,6 +118,7 @@ console.log(response.data) // The number of todo records that match the query pa
 ## Resources
 
 * [StandardAPI Docs](https://github.com/waratuman/standardapi)
+* [React StandardAPI Docs](https://github.com/wlaeri/react-standardapi)
 
 ## License
 
