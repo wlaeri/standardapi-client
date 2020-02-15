@@ -46,7 +46,7 @@ const client = new StandardAPIClient({
 ```
 
 ## Usage
-Essentially, StandardAPI Client extends [axios](https://github.com/axios/axios) under the hood, adding four methods `create`, `read`, `update`, and `destroy` for making StandardAPI calls.
+Essentially, StandardAPI Client extends [axios](https://github.com/axios/axios) under the hood, adding five methods `create`, `read`, `update`, `destroy`, and `count` for making StandardAPI calls.
 
 ### client.create(baseModel, payload)
 Sends a POST request to the Rails server to create a record.
