@@ -6,9 +6,6 @@
   "main": "build/StandardAPIClient.js",
   "author": "Will Laeri",
   "license": "MIT",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
   "engines": {
     "node": "v10.15.1",
     "yarn": "1.13.0"
