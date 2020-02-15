@@ -102,6 +102,19 @@ const response = await client.delete('todos', 'abc-123')
 console.log(response.status) // Returns 204 if record is successfully deleted.
 ```
 
+### client.count(baseModel, params)
+Sends a GET request to the Rails server to return the count of a record set.
+
+```node
+const response = await client.count('todos', {
+  where: {
+    priority: 'HIGH'
+  }
+})
+
+console.log(response.data) // The number of todo records that match the query parameters.
+```
+
 ## Resources
 
 * [StandardAPI Docs](https://github.com/waratuman/standardapi)
