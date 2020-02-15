@@ -30,3 +30,21 @@ test('create request has the right authorization headers', () => {
 test('mock response is successful', () => {
   expect(response.status).toBe(200)
 })
+
+test('should error when a baseModel isn\'t provided', async () => {
+  expect.assertions(1)
+  try {
+    await testClient.read()
+  } catch (e) {
+    expect(e.message).toMatch(/required/)
+  }
+})
+
+test('should error when an invalid baseModel is provided', async () => {
+  expect.assertions(1)
+  try {
+    await testClient.read(123)
+  } catch (e) {
+    expect(e.message).toMatch(/must be a string/)
+  }
+})
