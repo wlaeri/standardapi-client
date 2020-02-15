@@ -2,9 +2,13 @@
   "name": "standardapi-client",
   "version": "1.0.1",
   "description": "A javascript client for making StandardAPI calls.",
+  "url": "https://github.com/wlaeri/standardapi-client",
   "main": "build/StandardAPIClient.js",
   "author": "Will Laeri",
   "license": "MIT",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "engines": {
     "node": "v10.15.1",
     "yarn": "1.13.0"
