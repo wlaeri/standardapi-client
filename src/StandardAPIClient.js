@@ -37,11 +37,11 @@ class StandardAPIClient {
 
   read(baseModel, params){
     this.__handleBaseModelErrors(baseModel)
-    if (params.id) return this.__axios.get(`/${baseModel}/${params.id}`)
+    const { id } = params
     const queryString = params
-      ? qs.stringify({ ...defaultParams, ...params })
+      ? qs.stringify({ ...defaultParams, ...params, id: undefined })
       : qs.stringify(defaultParams)
-    return this.__axios.get(`/${baseModel}/?${queryString}`)
+    return this.__axios.get(`/${baseModel}/${ id ? `${id}/` : '' }?${queryString}`)
   }
 
   async count(baseModel, params){

@@ -1,6 +1,6 @@
 {
   "name": "standardapi-client",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A javascript client for making StandardAPI calls.",
   "url": "https://github.com/wlaeri/standardapi-client",
   "main": "build/StandardAPIClient.js",
