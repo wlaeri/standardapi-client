@@ -35,13 +35,17 @@ class StandardAPIClient {
     return this.__axios.post(`/${baseModel}/`, payload)
   }
 
-  read(baseModel, params){
+  read(baseModel, params = {}){
     this.__handleBaseModelErrors(baseModel)
     const { id } = params
     const queryString = params
       ? qs.stringify({ ...defaultParams, ...params, id: undefined })
       : qs.stringify(defaultParams)
     return this.__axios.get(`/${baseModel}/${ id ? `${id}/` : '' }?${queryString}`)
+  }
+
+  schema(){
+    return this.__axios.get(`/schema`)
   }
 
   async count(baseModel, params){
