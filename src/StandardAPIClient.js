@@ -14,6 +14,10 @@ const defaultCountParams = {
   distinct: true
 }
 
+const generateQueryString = (params) => {
+  return qs.stringify(params).replace(/\[[0-9]*\]/, '[]')
+}
+
 class StandardAPIClient {
   constructor (params) {
     this.__axios = axios.create(params)
@@ -39,8 +43,8 @@ class StandardAPIClient {
     this.__handleBaseModelErrors(baseModel)
     const { id } = params
     const queryString = params
-      ? qs.stringify({ ...defaultParams, ...params, id: undefined })
-      : qs.stringify(defaultParams)
+      ? generateQueryString({ ...defaultParams, ...params, id: undefined })
+      : generateQueryString(defaultParams)
     return this.__axios.get(`/${baseModel}/${ id ? `${id}/` : '' }?${queryString}`)
   }
 
@@ -51,8 +55,8 @@ class StandardAPIClient {
   async count(baseModel, params){
     this.__handleBaseModelErrors(baseModel)
     const queryString = params
-      ? qs.stringify({ ...params, ...defaultCountParams })
-      : qs.stringify(defaultCountParams)
+      ? generateQueryString({ ...params, ...defaultCountParams })
+      : generateQueryString(defaultCountParams)
     const response = await this.__axios.get(`/${baseModel}/calculate/?${queryString}`)
     return {
       ...response,
