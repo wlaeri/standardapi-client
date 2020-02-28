@@ -15,7 +15,7 @@ const defaultCountParams = {
 }
 
 const generateQueryString = (params) => {
-  return qs.stringify(params).replace(/\[[0-9]*\]/, '[]')
+  return qs.stringify(params, { arrayFormat: 'brackets' })
 }
 
 class StandardAPIClient {
